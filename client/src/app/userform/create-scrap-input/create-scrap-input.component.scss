@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+mat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+mat-form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+button {
+    margin: 0em 0.25em;
+}
+
+.print-preview {
+    padding: 0cm 0.5cm;
+    margin: 0.0cm 0.0cm;
+    table-layout: fixed;
+    width: 10cm;
+    height: 10cm;
+}
+
+// table td,
+// table th {
+//     border: 1px solid black;
+// }

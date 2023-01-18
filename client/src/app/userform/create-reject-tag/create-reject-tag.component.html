@@ -1,0 +1,102 @@
+<mat-stepper>
+    <mat-step errorMessage="Please completed reject form">
+        <ng-template matStepLabel>Reject details</ng-template>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Reject Found By</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>ItemName</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Drawing No.</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>SAP No.</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>MR No.</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Q'ty</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Lot No.</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Date / Shift</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Machine</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline" floatLabel="always">
+                        <mat-label>Found NG By</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <button mat-raised-button color="primary" matStepperNext>
+                Next
+            </button>
+        </div>
+    </mat-step>
+    <mat-step errorMessage="QA, please confirmed reject details">
+        <ng-template matStepLabel>Reject confirmed by QA</ng-template>
+        <div>
+            <button mat-raised-button color="accent" matStepperPrevious>
+                Back
+            </button>
+            <button mat-raised-button color="primary" matStepperNext>
+                Next
+            </button>
+        </div>
+    </mat-step>
+    <mat-step errorMessage="Please completed sorting details">
+        <ng-template matStepLabel>Sorting details</ng-template>
+    </mat-step>
+    <mat-step errorMessage="QA, please confirmed result sorting">
+        <ng-template matStepLabel>Sorting confirmed by QA</ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Completed</ng-template>
+    </mat-step>
+</mat-stepper>

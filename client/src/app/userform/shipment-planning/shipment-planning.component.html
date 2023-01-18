@@ -1,0 +1,113 @@
+<div>
+  Locked Headers:
+  <mat-button-toggle-group multiple [value]="['header-1']" #stickyHeaders="matButtonToggleGroup"
+    class="example-sticky-toggle-group">
+    <mat-button-toggle value="header-1"> Date </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  Locked Daily Total:
+  <mat-button-toggle-group multiple [value]="['footer-1']" #stickyFooters="matButtonToggleGroup"
+    class="example-sticky-toggle-group">
+    <mat-button-toggle value="footer-1"> Daily Total </mat-button-toggle>
+
+  </mat-button-toggle-group>
+
+  Locked Columns:
+  <mat-button-toggle-group multiple [value]="['id','partno', 'total', 'accumulate']"
+    #stickyColumns="matButtonToggleGroup" class="example-sticky-toggle-group">
+    <mat-button-toggle value="id">No.</mat-button-toggle>
+    <mat-button-toggle value="partno">Part No.</mat-button-toggle>
+    <mat-button-toggle value="total">Total</mat-button-toggle>
+    <mat-button-toggle value="accumulate">Accumulate</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id" [sticky]="isSticky(stickyColumns, 'id')">
+      <mat-header-cell *matHeaderCellDef>
+        No.
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element;let i = index">
+        {{i+1}}
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="partno" [sticky]="isSticky(stickyColumns, 'partno')">
+      <mat-header-cell *matHeaderCellDef> Part No. </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <table>
+          <tbody>
+            <td rowspan="2">{{element.partno}}</td>
+            <td>
+              <tr>
+                <td>plan</td>
+              </tr>
+              <tr>
+                <td>actual</td>
+              </tr>
+            </td>
+          </tbody>
+        </table>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef>
+        <table>
+          <tbody>
+            <td rowspan="2">Daily Total</td>
+            <td>
+              <tr>
+                <td>plan</td>
+              </tr>
+              <tr>
+                <td>actual</td>
+              </tr>
+            </td>
+          </tbody>
+        </table>
+      </mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="total" [stickyEnd]="isSticky(stickyColumns, 'total')">
+      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> Grand Total </mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="accumulate" [stickyEnd]="isSticky(stickyColumns, 'accumulate')">
+      <mat-header-cell *matHeaderCellDef> Accum </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> Grand Accumulate </mat-footer-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="filler">
+      <mat-header-cell *matHeaderCellDef="let element"> Filler header cell </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <table>
+          <tr>
+            <td>Test</td>
+          </tr>
+          <tr>
+            <td>123</td>
+          </tr>
+        </table>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef>
+        <table>
+          <tr>
+            <td>Tot plan</td>
+          </tr>
+          <tr>
+            <td>Tot actual</td>
+          </tr>
+        </table>
+      </mat-footer-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: isSticky(stickyHeaders, 'header-1')"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <mat-footer-row *matFooterRowDef="displayedColumns; sticky: isSticky(stickyFooters, 'footer-1')"></mat-footer-row>
+  </mat-table>
+</section>

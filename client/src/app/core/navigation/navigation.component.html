@@ -1,0 +1,70 @@
+<mat-sidenav #sidenav>
+    <div mat-subheader><h3>Master</h3></div>
+    <mat-nav-list *ngFor="let master of masters" (click)="sidenav.close()">
+        <a mat-list-item routerLink="{{master.path}}">
+            <mat-icon matListItemIcon>note_add</mat-icon>
+            <span>{{master.name}}</span>
+        </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <div mat-subheader><h3>Management</h3></div>
+    <mat-nav-list *ngFor="let management of managements" (click)="sidenav.close()">
+        <a mat-list-item routerLink="{{management.path}}">
+            <mat-icon matListItemIcon>dashboard</mat-icon>
+            <span>{{management.name}}</span>
+        </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <div mat-subheader><h3>Planning</h3></div>
+    <mat-nav-list *ngFor="let plan of plans" (click)="sidenav.close()">
+        <a mat-list-item routerLink="{{plan.path}}">
+            <mat-icon matListItemIcon>edit</mat-icon>
+            <span>{{plan.name}}</span>
+        </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <div mat-subheader><h3>Cost</h3></div>
+    <mat-nav-list *ngFor="let cost of costs" (click)="sidenav.close()">
+        <a mat-list-item routerLink="{{cost.path}}" >
+            <mat-icon matListItemIcon>attach_money</mat-icon>
+            <span>{{cost.name}}</span>
+        </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <div mat-subheader><h3>Quality</h3></div>
+    <mat-nav-list *ngFor="let quality of quanlities" (click)="sidenav.close()">
+        <a mat-list-item routerLink="/{{quality.path}}">
+            <mat-icon matListItemIcon>zoom_in</mat-icon>
+            <span>{{quality.name}}</span>
+        </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+
+    <div mat-subheader><h3>Maintenance</h3></div>
+    <mat-nav-list *ngFor="let maintenance of maintenances" (click)="sidenav.close()">
+        <a mat-list-item routerLink="/{{maintenance.path}}">
+            <mat-icon matListItemIcon>build</mat-icon>
+            <span>{{maintenance.name}}</span>
+        </a>
+    </mat-nav-list>
+</mat-sidenav>
+
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Safem0de in the Anger</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button style="margin: 0.2em;">
+        <mat-icon>login</mat-icon>
+        Login
+    </button>
+    <button mat-raised-button color="accent" style="margin: 0.2em;">
+        <mat-icon>logout</mat-icon>
+        Logout
+    </button>
+</mat-toolbar>
