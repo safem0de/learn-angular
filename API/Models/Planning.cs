@@ -15,7 +15,7 @@ namespace API.Models
 
         public int NgPart { get; set; }
 
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
 
         public int ProductId { get; set; }
     }
