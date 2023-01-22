@@ -16,19 +16,26 @@ namespace API.Services.CharacterService
                 Name = "Sam"
             }
         };
+        private readonly IMapper _mapper;
+
+        public CharacterService(IMapper mapper)
+        {
+            _mapper = mapper;
+            
+        }
 
         public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
         {
             var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
-            characters.Add(newCharacter);
-            serviceResponse.Data = characters;
+            characters.Add(_mapper.Map<Character>(newCharacter));
+            serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
             return serviceResponse;
         }
 
         public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacter()
         {
             var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
-            serviceResponse.Data = characters;
+            serviceResponse.Data = characters.Select(c => _mapper.Map<GetCharacterDto>(c)).ToList();
             return serviceResponse;
         }
 
@@ -36,7 +43,7 @@ namespace API.Services.CharacterService
         {
             var serviceResponse = new ServiceResponse<GetCharacterDto>();
             var character = characters.FirstOrDefault(c => c.Id == id);
-            serviceResponse.Data = character;
+            serviceResponse.Data = _mapper.Map<GetCharacterDto>(character);
             return serviceResponse;
         }
     }
