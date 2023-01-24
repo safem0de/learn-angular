@@ -105,6 +105,10 @@ namespace API.Data
                 SigningCredentials = creds
             };
 
+            
+            // SecurityToken token = tokenHandler.CreateToken(tokenDescirptor);
+            // tokenHandler.WriteToken(token);
+
             return string.Empty;
         }
     }
