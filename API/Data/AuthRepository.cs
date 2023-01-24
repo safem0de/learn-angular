@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using API.Models;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace API.Data
 {
@@ -105,11 +106,9 @@ namespace API.Data
                 SigningCredentials = creds
             };
 
-            
-            // SecurityToken token = tokenHandler.CreateToken(tokenDescirptor);
-            // tokenHandler.WriteToken(token);
-
-            return string.Empty;
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken token = tokenHandler.CreateToken(tokenDescirptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
